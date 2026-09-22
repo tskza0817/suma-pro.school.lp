@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suma-Pro | 住まい専門FPプロフェッショナルスクール</title>
+<style>
+:root {
+  --suma-teal: #6FC5C6;
+  --accent-gold: #cfa968;
+  --text-main: #333333;
+  --bg-white: #ffffff;
+  --bg-light: #f7f9f9;
+  --bg-vision: #eff8f8;
+}
+.sp-wrapper {
+  font-family: "Meiryo UI", "Meiryo", sans-serif;
+  background-color: var(--bg-white);
+  color: var(--text-main);
+  margin: 0; padding: 0;
+  line-height: 1.7;
+  word-break: break-all;
+  font-weight: bold;
+}
+
+/* ヒーロー */
+.hero-container {
+  padding: 60px 20px;
+  min-height: 250px;
+  background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+  url('https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1200&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: #fff;
+}
+.hero-logo {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 15px;
+}
+.hero-main-title { font-size: clamp(1.5rem, 5vw, 2.2rem); font-weight: bold; color: var(--suma-teal); letter-spacing: 0.15em; margin: 10px 0; }
+.price-box { margin: 15px 0; padding: 8px 25px; border: 2px solid var(--accent-gold); display: inline-block; font-weight: bold; color: #fff; }
+
+/* 共通見出し */
+.section-padding { padding: 40px 5%; max-width: 1100px; margin: 0 auto; overflow: hidden; }
+.title-area { margin-bottom: 30px; position: relative; }
+.title-area.center { text-align: center; }
+.title-area.left { text-align: left; padding-left: 20px; border-left: 5px solid var(--suma-teal); }
+.section-title { font-size: 1.8rem; color: var(--suma-teal); margin: 0; letter-spacing: 0.1em; display: inline-block; font-weight: bold; }
+.section-sub { display: block; font-size: 0.9rem; color: var(--accent-gold); letter-spacing: 0.2em; margin-bottom: 5px; text-transform: uppercase; font-weight: bold; }
+
+/* 1. 5つのゴール */
+.goal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+.goal-card { background: var(--bg-light); padding: 20px; border-radius: 4px; position: relative; border-bottom: 3px solid #eee; }
+.goal-num { font-size: 1.5rem; color: var(--accent-gold); font-weight: bold; opacity: 0.5; position: absolute; top: 10px; right: 15px; }
+.goal-card h3 { font-size: 1.1rem; color: var(--suma-teal); margin: 0 0 10px 0; padding-right: 30px; font-weight: bold; }
+.goal-card p { font-size: 0.9rem; color: var(--text-main); margin: 0; font-weight: bold; }
+
+/* 対比図セクション */
+.compare-box { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+.compare-card { flex: 1; min-width: 280px; padding: 25px; border-radius: 8px; position: relative; }
+.compare-card.off { background: #f2f2f2; border: 1px solid #ddd; }
+.compare-card.on { background: #fff; border: 3px solid var(--suma-teal); box-shadow: 0 10px 30px rgba(111, 197, 198, 0.15); }
+.compare-tag { position: absolute; top: -12px; left: 20px; padding: 3px 15px; font-size: 0.8rem; font-weight: bold; border-radius: 20px; }
+.compare-card.off .compare-tag { background: #777; color: #fff; }
+.compare-card.on .compare-tag { background: var(--suma-teal); color: #fff; }
+.compare-card h4 { margin: 10px 0; font-size: 1.15rem; color: #111; font-weight: bold; }
+.compare-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; }
+.compare-list li { margin-bottom: 8px; padding-left: 20px; position: relative; font-weight: bold; }
+.compare-list li::before { content: '×'; position: absolute; left: 0; color: #777; font-weight: bold; }
+.compare-card.on .compare-list li::before { content: '✔'; color: var(--suma-teal); font-weight: bold; }
+
+/* 画像配置用スタイル */
+.evolution-image-area { text-align: center; margin-top: 40px; }
+.evolution-image-area img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+/* --- カリキュラム（タイムラインUI） --- */
+.timeline-wrapper { position: relative; max-width: 900px; margin: 0 auto; padding-left: 20px; border-left: 3px solid #e2e8f0; }
+.timeline-phase { position: relative; margin-bottom: 35px; }
+.timeline-phase::before { content: ''; position: absolute; left: -28px; top: 0; width: 13px; height: 13px; border-radius: 50%; background: var(--suma-teal); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--suma-teal); }
+.timeline-phase.pre::before { background: #94a3b8; box-shadow: 0 0 0 2px #94a3b8; }
+.timeline-phase.exam::before { background: var(--accent-gold); box-shadow: 0 0 0 2px var(--accent-gold); }
+
+.phase-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: bold; color: #fff; background: var(--suma-teal); padding: 3px 12px; border-radius: 12px; margin-bottom: 6px; }
+.phase-label.pre { color: #fff; background: #94a3b8; }
+.phase-label.exam { color: #fff; background: var(--accent-gold); }
+.phase-title-text { font-size: 1.15rem; font-weight: bold; color: #1e293b; margin: 0 0 12px 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
+
+.schedule-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.schedule-table tr { border-bottom: 1px solid #f1f5f9; }
+.schedule-table tr:last-child { border-bottom: none; }
+.schedule-table td { padding: 12px 15px; font-size: 0.9rem; vertical-align: middle; }
+.td-day { width: 70px; font-weight: bold; color: var(--suma-teal); }
+.td-date { width: 170px; font-size: 0.85rem; color: #64748b; white-space: nowrap; }
+.td-content { font-weight: bold; color: var(--text-main); }
+
+.timeline-note { background: #fffaf0; border-left: 3px solid var(--accent-gold); padding: 12px 16px; margin-bottom: 12px; border-radius: 0 4px 4px 0; font-size: 0.9rem; color: #333; line-height: 1.6; }
+
+/* 収益モデル */
+.profit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+.profit-item { background: #fff; padding: 20px; border-left: 5px solid var(--accent-gold); display: flex; align-items: flex-start; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.profit-icon { background: var(--bg-light); color: var(--accent-gold); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; font-weight: bold; font-size: 1.2rem; }
+.profit-text h5 { margin: 0 0 5px 0; color: var(--suma-teal); font-size: 1.1rem; font-weight: bold; }
+.profit-text p { margin: 0; font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
+
+/* ビジョン */
+.vision-section { background-color: var(--bg-vision); border-top: 1px solid #dff2f2; border-bottom: 1px solid #dff2f2; padding: 40px 5%; display: flex; justify-content: center; align-items: center; gap: 40px; }
+.vision-vertical-copy { writing-mode: vertical-rl; font-size: 1.6rem; font-weight: bold; color: var(--suma-teal); letter-spacing: 0.3em; line-height: 1.2; border-right: 3px solid var(--accent-gold); padding-right: 15px; margin: 0; }
+.vision-content { max-width: 600px; }
+.vision-content h4 { font-size: 1.3rem; color: var(--text-main); margin: 0 0 15px 0; line-height: 1.6; font-weight: bold; }
+.vision-content p { font-size: 1rem; color: #333; margin: 0; line-height: 1.9; font-weight: bold; }
+.gold-line-accent { width: 50px; height: 3px; background-color: var(--accent-gold); margin-bottom: 15px; }
+
+/* 参加特典 */
+.benefit-row { display: flex; align-items: center; gap: 30px; margin-bottom: 35px; }
+.benefit-row:nth-child(even) { flex-direction: row-reverse; }
+.benefit-img-wrap { flex: 1; min-width: 280px; }
+.benefit-img-wrap img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 10px 10px 0 var(--bg-light); }
+.benefit-text-wrap { flex: 1; }
+.benefit-text-wrap h4 { font-size: 1.3rem; color: var(--suma-teal); margin: 0 0 12px 0; border-bottom: 2px solid var(--accent-gold); display: inline-block; font-weight: bold; }
+.benefit-text-wrap p { font-weight: bold; font-size: 0.95rem; }
+
+/* 声 */
+.voice-flex { display: flex; flex-wrap: wrap; gap: 15px; }
+.voice-bubble { flex: 1; min-width: 300px; background: #fff; padding: 20px; border: 2px solid #eee; border-radius: 15px; position: relative; margin-bottom: 20px; }
+.voice-bubble::after { content: ''; position: absolute; bottom: -10px; left: 30px; border-width: 10px 10px 0; border-style: solid; border-color: #eee transparent; }
+.voice-user { font-weight: bold; color: var(--suma-teal); font-size: 0.95rem; display: block; margin-bottom: 8px; border-bottom: 1px solid var(--bg-light); }
+.voice-content { font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
+
+/* 概要 */
+.info-container { background: #fff; padding: 30px; border-radius: 8px; max-width: 700px; margin: 0 auto; border: 2px solid var(--suma-teal); }
+.info-list { list-style: none; padding: 0; margin: 0; }
+.info-list li { margin-bottom: 15px; display: flex; flex-wrap: wrap; border-bottom: 1px dashed #ccc; padding-bottom: 12px; }
+.info-label { width: 110px; font-weight: bold; color: var(--suma-teal); flex-shrink: 0; font-size: 1rem; text-align: left; }
+.info-text { flex: 1; min-width: 200px; text-align: left; font-size: 1rem; font-weight: bold; }
+
+.cta-btn { display: inline-block; background: var(--suma-teal); color: #fff !important; padding: 18px 60px; text-decoration: none; font-weight: bold; font-size: 1.2rem; border-radius: 50px; margin-top: 30px; box-shadow: 0 5px 25px rgba(111, 197, 198, 0.4); transition: opacity 0.3s; }
+.cta-btn:hover { opacity: 0.9; }
+
+@media (max-width: 768px) {
+  .vision-section { flex-direction: column; gap: 20px; text-align: center; }
+  .vision-vertical-copy { writing-mode: horizontal-tb; border-right: none; border-bottom: 3px solid var(--accent-gold); padding-right: 0; padding-bottom: 10px; }
+  .benefit-row, .benefit-row:nth-child(even) { flex-direction: column; gap: 15px; }
+  .info-label { width: 100%; margin-bottom: 5px; }
+  .compare-box { flex-direction: column; }
+  .timeline-wrapper { padding-left: 10px; border-left: 2px solid #e2e8f0; }
+  .timeline-phase::before { left: -16px; width: 10px; height: 10px; }
+  .schedule-table td { display: block; width: 100%; box-sizing: border-box; padding: 6px 12px; }
+  .schedule-table tr { padding: 8px 0; display: block; border-bottom: 1px solid #e2e8f0; }
+  .td-day { font-size: 0.8rem; color: var(--suma-teal); }
+  .td-date { font-size: 0.8rem; color: #888; }
+}
+</style>
+</head>
+<body>
+
+<div class="sp-wrapper">
+<header class="hero-container">
+<!-- ロゴ画像 -->
+<div><img src="/images/S-P_A-e_Color.png" alt="Suma-Pro Logo" class="hero-logo"></div>
+<h1 class="hero-main-title">住まい専門FP<br>プロフェッショナルスクール<br>第４期生の募集を開始しました。</h1>
+<div class="price-box"><span style="font-size: 1.6rem; font-weight: bold;">300,000円</span><span style="font-size: 0.9rem; font-weight: bold;">（税込）/人</span></div>
+<div><a href="https://forms.gle/VZSCWBrxvArjDTzm9" target="_blank" class="cta-btn">説明会のお申し込みはこちら</a></div>
+</header>
+
+<section class="section-padding">
+<div class="title-area center">
+<span class="section-sub">OUR MISSION</span>
+<h2 class="section-title">5つのゴール</h2>
+</div>
+<div class="goal-grid">
+<div class="goal-card"><span class="goal-num">01</span><h3>収益に直結</h3><p>知識を稼ぐ力に変える実務スキームを構築。</p></div>
+<div class="goal-card"><span class="goal-num">02</span><h3>継続の場</h3><p>修了後も最新情報を共有し、共に研鑽する場。</p></div>
+<div class="goal-card"><span class="goal-num">03</span><h3>専門の地位</h3><p>不動業界から「真っ先に頼られる」存在へ。</p></div>
+<div class="goal-card"><span class="goal-num">04</span><h3>究極の信頼</h3><p>資金から物件まで一手に。顧客の不安を解消。</p></div>
+<div class="goal-card"><span class="goal-num">05</span><h3>独自の武器</h3><p>認定ライセンスで、圧倒的な差別化を実現。</p></div>
+</div>
+</section>
+
+<section class="section-padding" style="background-color: #fdfdfd; padding-top: 0;">
+<div class="title-area center">
+<span class="section-sub">EVOLUTION</span>
+<h2 class="section-title">FPとしての進化</h2>
+</div>
+<div class="compare-box">
+<div class="compare-card off">
+<span class="compare-tag">一般的な保険系FP</span>
+<h4>「保険を売る」のが仕事</h4>
+<ul class="compare-list">
+<li>不動産知識の不足によるレベル差</li>
+<li>保険販売注力による「売られる」不安</li>
+<li>ライフプランが保険の出口に偏る</li>
+<li>不動産会社から敬遠されがち</li>
+</ul>
+</div>
+<div class="compare-card on">
+<span class="compare-tag">Suma-Pro認定FP</span>
+<h4>「住まいを導く」のが仕事</h4>
+<ul class="compare-list">
+<li>不動産購入・売却後のお金も語れる</li>
+<li>専門ライセンスによる圧倒的な信頼</li>
+<li>提携先から「先生」と仰がれる存在</li>
+<li>不動産実務と連動した高い歩留まり</li>
+</ul>
+</div>
+</div>
+<!-- 進化図解画像 -->
+<div class="evolution-image-area">
+<img src="/images/Differentiation.png" alt="FPとしての進化図解">
+</div>
+</section>
+
+<section class="vision-section">
+<p class="vision-vertical-copy">真の専門家への進化</p>
+<div class="vision-content">
+<div class="gold-line-accent"></div>
+<h4>「保険を売るFP」から、<br>「住まいを導く専門家」へ。</h4>
+<p>
+専門知識が求められる住宅マーケットへ参入し、圧倒的な差別化を実現します。
+不動産と金融を融合させた「総合的なライフプランニング力」を武器に、
+顧客から一生涯頼られ続けるプロフェッショナルへと進化を遂げます。
+</p>
+</div>
+</section>
+
+<!-- カリキュラム（Phase構成） -->
+<section class="section-padding">
+<div class="title-area center">
+<span class="section-sub">CURRICULUM</span>
+<h2 class="section-title">受講カリキュラム</h2>
+</div>
+
+<div class="timeline-wrapper">
+<!-- PRE-LEARNING -->
+<div class="timeline-phase pre">
+<span class="phase-label pre">PRE-LEARNING</span>
+<h3 class="phase-title-text">事前学習期間</h3>
+<table class="schedule-table">
+<tr>
+<td class="td-day">Day 0</td>
+<td class="td-date">11/1(日) 〜 12/2(水)</td>
+<td class="td-content">事前学習期間（期間中に2日間のフォロー講座を実施）</td>
+</tr>
+</table>
+</div>
+
+<!-- PHASE 1 -->
+<div class="timeline-phase">
+<span class="phase-label">PHASE 1</span>
+<h3 class="phase-title-text">マインドセットと不動産・住宅購入の基礎</h3>
+<table class="schedule-table">
+<tr>
+<td class="td-day">Day 1</td>
+<td class="td-date">12月3日(木) 18:00-20:00</td>
+<td class="td-content">オリエンテーション / ライフプランニングの必要性と不動産からアプローチする有用性</td>
+</tr>
+<tr>
+<td class="td-day">Day 2</td>
+<td class="td-date">12月7日(月) 18:00-20:00</td>
+<td class="td-content">事前学習のふりかえりと不動産基礎知識の確認 / お客様とのファーストコンタクト</td>
+</tr>
+<tr>
+<td class="td-day">Day 3</td>
+<td class="td-date">12月10日(木) 18:00-20:00</td>
+<td class="td-content">住宅購入の流れと資金計画表の見方 / 不動産営業がFPに求めること</td>
+</tr>
+</table>
+</div>
+
+<!-- PHASE 2 -->
+<div class="timeline-phase">
+<span class="phase-label">PHASE 2</span>
+<h3 class="phase-title-text">ベーシックコンサルティングの実践</h3>
+<div class="timeline-note">
+<strong style="font-size: 1.05rem; color: var(--suma-teal);">ベーシックコンサルティング<br>〜買い時の見極めから資金計画イメージの確立まで〜</strong><br>
+※「いつ・いくらで買うべきか」を解き明かし、顧客が安心して一歩を踏み出せる資金計画イメージを共創する3日間
+</div>
+<table class="schedule-table">
+<tr>
+<td class="td-day">Day 4</td>
+<td class="td-date">12月14日(月) 18:00-20:00</td>
+<td class="td-content"></td>
+</tr>
+<tr>
+<td class="td-day">Day 5</td>
+<td class="td-date">12月17日(木) 18:00-20:00</td>
+<td class="td-content"></td>
+</tr>
+<tr>
+<td class="td-day">Day 6</td>
+<td class="td-date">12月21日(月) 18:00-20:00</td>
+<td class="td-content"></td>
+</tr>
+</table>
+</div>
+
+<!-- PHASE 3 -->
+<div class="timeline-phase exam">
+<span class="phase-label exam">PHASE 3</span>
+<h3 class="phase-title-text">振り返り＆ライセンス取得検定</h3>
+<table class="schedule-table">
+<tr>
+<td class="td-day">Day 7</td>
+<td class="td-date">1月7日(木) 18:00-20:00</td>
+<td class="td-content">Day1〜Day6 振り返りワーク</td>
+</tr>
+<tr>
+<td class="td-day">Day 8</td>
+<td class="td-date">1月14日(木) 18:00-20:00</td>
+<td class="td-content">Suma-Proライセンス取得検定（ロープレ・テスト）</td>
+</tr>
+</table>
+</div>
+
+<!-- PHASE 4 -->
+<div class="timeline-phase">
+<span class="phase-label">PHASE 4</span>
+<h3 class="phase-title-text">実務応用・コンサルティングと出発</h3>
+<table class="schedule-table">
+<tr>
+<td class="td-day">Day 9</td>
+<td class="td-date">1月18日(月) 18:00-20:00</td>
+<td class="td-content">実務編 ベーシックコンサルティング ①</td>
+</tr>
+<tr>
+<td class="td-day">Day 10</td>
+<td class="td-date">1月21日(木) 18:00-20:00</td>
+<td class="td-content">実務編 ベーシックコンサルティング ②</td>
+</tr>
+<tr>
+<td class="td-day">Day 11</td>
+<td class="td-date">1月25日(月) 18:00-20:00</td>
+<td class="td-content">実務編 火災保険対応 / 契約者コンサル</td>
+</tr>
+<tr>
+<td class="td-day">Day 12</td>
+<td class="td-date">1月28日(木) 18:00-20:00</td>
+<td class="td-content">マーケットで活躍するためのマインドセット / 出発式</td>
+</tr>
+</table>
+</div>
+
+</div>
+</section>
+
+<section class="section-padding" style="padding-top: 0;">
+<div class="title-area left">
+<span class="section-sub">BUSINESS MODEL</span>
+<h2 class="section-title">3つの収益の柱</h2>
+</div>
+<div class="profit-grid">
+<div class="profit-item">
+<div class="profit-icon">1</div>
+<div class="profit-text">
+<h5>不動産仲介・紹介収益</h5>
+<p>物件探しへの発展から提携先へのトスアップによる紹介料獲得。</p>
+</div>
+</div>
+<div class="profit-item">
+<div class="profit-icon">2</div>
+<div class="profit-text">
+<h5>資産運用コンサル</h5>
+<p>住宅購入を機としたNISA・iDeCo等の積立・運用相談の深化。</p>
+</div>
+</div>
+<div class="profit-item">
+<div class="profit-icon">3</div>
+<div class="profit-text">
+<h5>多角的な保険契約</h5>
+<p>信頼構築により、家族全員分などの大型・複数契約への波及。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 参加特典（画像変更箇所） -->
+<section class="section-padding" style="background-color: #fdfdfd; padding-top: 30px;">
+<div class="title-area left">
+<span class="section-sub">SPECIAL BENEFITS</span>
+<h2 class="section-title">参加特典</h2>
+</div>
+<div class="benefit-row">
+<div class="benefit-img-wrap">
+<!-- 特典1：営業ツール -->
+<img src="/images/Sales tools.png" alt="営業ツール活用">
+</div>
+<div class="benefit-text-wrap">
+<h4>1. 営業ツール活用</h4>
+<p>エクセルシート、ヒアリングシート、住宅ローン償還表など、国内の実務で即戦力となるツール一式を提供します。</p>
+</div>
+</div>
+<div class="benefit-row">
+<div class="benefit-img-wrap">
+<!-- 特典2：KA.KE.RU. -->
+<img src="/images/KA.KE.RU. free.png" alt="KA.KE.RU.サポート">
+</div>
+<div class="benefit-text-wrap">
+<h4>2. KA.KE.RU.サイト1年間無料</h4>
+<p>FPのためのプラットフォームを1年間無料でご利用いただくことが出来ます。商材の紹介による副収入を得ることが出来たり、専門家へ自由にご相談いただけます。</p>
+</div>
+</div>
+<div class="benefit-row">
+<div class="benefit-img-wrap">
+<!-- 特典3：マーケット -->
+<img src="/images/Market.png" alt="マーケット参加権">
+</div>
+<div class="benefit-text-wrap">
+<h4>3. マーケット参加権</h4>
+<p>グループのプラットフォームを活用し、専門性を活かせる質の高いマーケットへのアクセス権を提供します。</p>
+</div>
+</div>
+</section>
+
+<section class="section-padding" style="padding-top: 20px;">
+<div class="title-area center">
+<span class="section-sub">SUCCESS STORIES</span>
+<h2 class="section-title">受講生の声</h2>
+</div>
+<div class="voice-flex">
+<div class="voice-bubble">
+<span class="voice-user">M.T様</span>
+<p class="voice-content">今まで「今買った方がいい」という一辺倒の対応から、ライフプランを俯瞰した提案へ。結果、保険契約もいただくことができました。</p>
+</div>
+<div class="voice-bubble">
+<span class="voice-user">T.K様</span>
+<p class="voice-content">ローン返済プランまで提案し具体的な物件探しが開始。保険・NISAのお話に加え、不動産紹介料もいただけて収益が向上しました。</p>
+</div>
+</div>
+</section>
+
+<section class="section-padding" id="apply" style="text-align: center; background-color: #fdfdfd; border-top: 1px solid #f0f0f0; padding-top: 30px;">
+<div class="title-area center">
+<span class="section-sub">OUTLINE</span>
+<h2 class="section-title">開催概要</h2>
+</div>
+<div class="info-container">
+<ul class="info-list">
+<li><div class="info-label">実施期間</div><div class="info-text">12月3日(木)～1月28日(木)<br>毎週月・木曜日（全12回）<br>※事前学習期間：11月1日(日)～12月2日(水) ※事前学習期間中に2日間のフォロー講座を実施します。</div></li>
+<li><div class="info-label">申込期間</div><div class="info-text">10月30日(金)まで<br></div></li>
+<li><div class="info-label">入金締切</div><div class="info-text">11月16日(月)まで<br>支払方法：クレジットカード</div></li>
+
+<li><div class="info-label">形式</div><div class="info-text">オンライン（Zoom開催） 18:00 〜 20:00</div></li>
+<li><div class="info-label">受講料</div><div class="info-text">300,000円（税込）</div></li>
+<li><div class="info-label">定員</div><div class="info-text">15名限定（先着順）</div></li>
+<li><div class="info-label">運営体制</div><div class="info-text">LifeLinkage株式会社 / 一般社団法人FP支援アカデミー</div></li>
+</ul>
+</div>
+<a href="https://forms.gle/VZSCWBrxvArjDTzm9" target="_blank" class="cta-btn">説明会のお申し込みはこちら</a>
+</section>
+</div>
+
+</body>
+</html>
